@@ -1,7 +1,9 @@
 module top (
 );
- 
+
+// Reg sync signal
 reg clk = 0;
+// Reg Input signal
 reg dat = 0;
  
 always
@@ -10,7 +12,8 @@ always
 initial
     #10000
         $finish();
- 
+
+// Create random input signal
 always @(negedge clk)
     dat = $urandom_range(0,1);
  
@@ -24,7 +27,7 @@ wire dat_d1;
 wire dat_d2;
 wire dat_d3;
  
-// only for debug!
+// Display input signals
 wire [2:0] dat_sum = {dat_d3 & cnt3, dat_d2 & cnt3, dat_d1 & cnt3};
 
  
@@ -33,9 +36,12 @@ wire dat_s1 = (dat_d1 | dat_d2) & ~(dat_d1 & dat_d2);
 wire dat_s2 = (dat_s1 | dat_d3) & ~(dat_s1 & dat_d3);
 wire dat_sum_calc = dat_s2;
  
-wire dat_sum_out; /// RESULTED OUTPUT SIGNAL
+/// RESULTED OUTPUT SIGNAL
+wire dat_sum_out; 
+
+// Helpers
 wire [0:1] dat_sum2 = {dat_sum_out};
-wire [2:0] dat_sum3 = {dat_sum_out & dat};
+wire I = {dat};
  
 // Kind of "SHIFT register" on D-triggers
 DTRIG dt1 (

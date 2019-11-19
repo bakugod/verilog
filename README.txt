@@ -10,9 +10,12 @@ Icarus Verilog
 
 Реализовано сложение по модулю 2 (так как не понятно какое требуется, ниже приведены оба решения).
 
-Solution: (c1 & c2 & c3) | ~(c1 | c2 | c3)
+Solution: 
+wire dat_s1 = (dat_d1 | dat_d2) & ~(dat_d1 & dat_d2);
+wire dat_s2 = (dat_s1 | dat_d3) & ~(dat_s1 & dat_d3);
+wire dat_sum_calc = dat_s2;
 ||
-Solution: (c1 | c2 | c3)
+Solution: wire dat_sum_calc = (dat_d1 | dat_d2 | dat_d3);
 
 For start:
 iverilog -o compfile top.v

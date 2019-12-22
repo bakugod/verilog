@@ -69,7 +69,7 @@ DTRIG dt3 (
 // single impulse every 3 takts
 wire cnt3;
 
-wire out_test = (dat_sum_out & cnt3);
+wire out_test = (dat_sum_calc & ~clk & cnt3);
 wire O = {out_test};
 
 // output trigger

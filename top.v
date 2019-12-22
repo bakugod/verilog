@@ -69,7 +69,11 @@ DTRIG dt3 (
 // single impulse every 3 takts
 wire cnt3;
 
+wire out_test = (dat_sum_out & cnt3);
+wire O = {out_test};
+
 // output trigger
+
 DTRIG out (
     .D(dat_sum_calc),
     .C(~clk & cnt3),
@@ -85,7 +89,7 @@ CNT3 c3 (
  
 endmodule
  
- 
+
 // 3 takt impulse generator
 module CNT3 (
     input wire C,

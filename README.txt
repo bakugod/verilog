@@ -14,7 +14,7 @@ Solution:
 wire dat_s1 = (dat_d1 | dat_d2) & ~(dat_d1 & dat_d2);
 wire dat_s2 = (dat_s1 | dat_d3) & ~(dat_s1 & dat_d3);
 wire dat_sum_calc = dat_s2;
-||
+Или
 Solution: wire dat_sum_calc = (dat_d1 | dat_d2 | dat_d3);
 
 For start:
